@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orologio</title>
+    <script src="../dist/app.js"></script>
+</head>
+<body>
+    <header>
+        <h2>Orologi</h2>
+        <p>L'orologio serve ad indicare l'ora del giorno</p>
+        <p>In questa pagina puoi trovare due orologi ed usarli entrambi per fare due attivit&agrave;!</p>
+    </header> <br/>
+    <div class="containerFirstClock">
+        <p>Imposta il tempo della lavatrice sul primo orologio per sapere a che ora finisce</p>
+        <form>
+            <label for="timeFirstClock">Inserisci il tempo in minuti</label>
+            <input type="number" id="timeFirstClock" name="timeFirstClock">
+            <button type="button" onclick="convertTimeFirstClock ()">Imposta</button>
+        </form>
+    </div> <br/>
+    <div class="containerSecondClock">
+        <p>Imposta il tempo sul secondo orologio per sapere quanto ci mette tuo figlio a prepararsi</p>
+        <label for="timeSecondClock">Inserisci il tempo in minuti</label>
+        <input type="number" id="timeSecondClock" name="timeSecondClock">
+        <button type="button" onclick="convertTimeSecondClock()">Imposta</button>
+    </div>
+</body>
+</html>
