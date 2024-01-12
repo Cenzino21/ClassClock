@@ -34,58 +34,36 @@ class Clock {
             console.log("Errore! Inserisci valori interi tra 0 e 59");
         }
     }
-    addSecond(secondAdd) {
-        this.second += secondAdd;
-        var minutesObtained = Math.floor(this.second / 60);
-        this.addMinute(minutesObtained);
-        this.second = (this.second % 60);
+    //I metodi getter sono utilizzati per accedere alle proprietà di un oggetto.
+    //I metodi setter vengono utilizzati per modificare i valori di un oggetto.
+    get hourValue() {
+        return this.hour;
     }
-    addMinute(minuteAdd) {
-        this.minute += minuteAdd;
-        var hourObtained = Math.floor(this.minute / 60);
-        this.addHour(hourObtained);
-        this.minute = (this.minute % 60);
+    set hourValue(value) {
+        this.hour = value;
     }
-    addHour(hourAdd) {
-        this.hour += hourAdd;
-        this.hour = this.hour % 24;
+    get minuteValue() {
+        return this.minute;
     }
-    subtractionSecond(subtractionSecond) {
-        this.second -= subtractionSecond;
-        while (this.second < 0) {
-            this.second += 60;
-            this.minute--;
-        }
-        if (this.minute < 0) {
-            this.minute += 60;
-        }
+    set minuteValue(value) {
+        this.minute = value;
     }
-    subtractionMinute(subtractionMinute) {
-        this.minute -= subtractionMinute;
-        while (this.minute < 0) {
-            this.minute += 60;
-            this.hour--;
-        }
-        if (this.hour < 0) {
-            this.hour += 24;
-        }
+    get secondValue() {
+        return this.second;
     }
-    subtractionHour(subtractionHour) {
-        this.hour -= subtractionHour;
-        if (this.hour < 0) {
-            this.hour += 24;
-        }
+    set secondValue(value) {
+        this.second = value;
     }
 }
 var firstClock = new Clock(15, 20, 25);
-//firstClock.addSecond(3000);
-//firstClock.addMinute(3000);
+//firstClock.addSecond(80);
+//firstClock.addMinute(120);
 //firstClock.addHour(23);
-//firstClock.subtractionSecond(80);
-//firstClock.subtractionMinute(100);
-//firstClock.subtractionHour(16);
+//firstClock.subtractionSecond(3000);
+//firstClock.subtractionMinute(110);
+//firstClock.subtractionHour(25);
 console.log(firstClock);
-var secondClock = new Clock(13, 0.5, 45);
+var secondClock = new Clock(15, 20.5, 25);
 //secondClock.addSecond(40);
 //secondClock.addMinute(65);
 //secondClock.addHour(4);
@@ -95,7 +73,9 @@ var secondClock = new Clock(13, 0.5, 45);
 console.log(secondClock);
 //Funzione che compara i due orologi
 function compareTwoClock() {
-    if (firstClock === secondClock) {
+    if (firstClock.hourValue == secondClock.hourValue &&
+        firstClock.minuteValue == secondClock.minuteValue &&
+        firstClock.secondValue == secondClock.secondValue) {
         console.log("I due orologi sono uguali");
     }
     else {
