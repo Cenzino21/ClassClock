@@ -54,8 +54,96 @@ class Clock {
     set secondValue(value) {
         this.second = value;
     }
+    /*
+    addSecond(secondAdd: number) {
+        this.second += secondAdd;
+        var minutesObtained = Math.floor(this.second / 60);
+        this.addMinute(minutesObtained);
+        this.second = (this.second%60);
+    }
+
+    addMinute(minuteAdd: number) {
+        this.minute += minuteAdd;
+        var hourObtained = Math.floor(this.minute / 60);
+        this.addHour(hourObtained);
+        this.minute = (this.minute%60);
+    }
+
+    addHour(hourAdd:number) {
+        this.hour += hourAdd;
+        this.hour = this.hour%24;
+    }
+
+    subtractionSecond(subtractionSecond: number) {
+        this.second -= subtractionSecond;
+        var minuteSubstraction = Math.floor(this.second / 60);
+        this.subtractionMinute(minuteSubstraction);
+        if(this.second < 0) {
+            this.second = (this.second % 60) * (-1);
+        } else {
+            this.second = (this.second % 60);
+        }
+
+    }
+
+    subtractionMinute(subtractionMinute: number) {
+        this.minute -= subtractionMinute;
+        var hourSubstraction = Math.floor(this.minute / 60);
+        this.subtractionHour(hourSubstraction);
+        if(this.minute < 0) {
+            this.minute = (this.minute % 60) * (-1);
+        } else {
+            this.minute = (this.minute % 60);
+        }
+    }
+
+    subtractionHour(subtractionHour: number) {
+        this.hour -= subtractionHour;
+        if(this.hour < 0) {
+            this.hour += 24;
+        }
+    }*/
+    operationSecond(valueSecond) {
+        this.second += valueSecond;
+        var minutesObtained = Math.floor(this.second / 60);
+        this.minute += minutesObtained;
+        this.second = (this.second % 60);
+        while (this.second < 0) {
+            this.second += 60;
+        }
+        while (this.minute > 59) {
+            this.minute -= 60;
+            this.hour++;
+        }
+        /*
+        if(this.second < 0) {
+            this.second += 60;
+        }
+        if(this.minute > 59) {
+            this.minute -= 60;
+        } else if(this.minute < 0) {
+            this.minute += 60;
+        }*/
+    }
+    operationMinute(valueMinute) {
+        this.minute += valueMinute;
+        var hourObtained = Math.floor(this.minute / 60);
+        this.hour += hourObtained;
+        this.minute = (this.minute % 60);
+        while (this.minute < 0) {
+            this.minute += 60;
+        }
+        while (this.minute > 59) {
+            this.minute -= 60;
+        }
+        while (this.hour > 23) {
+            this.hour -= 24;
+        }
+    }
+    operationHour(valueHour) { }
 }
 var firstClock = new Clock(15, 20, 25);
+firstClock.operationSecond(-50);
 //firstClock.addSecond(80);
 //firstClock.addMinute(120);
 //firstClock.addHour(23);

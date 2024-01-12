@@ -105,10 +105,52 @@ class Clock {
             this.hour += 24;
         }
     }*/
+
+    operationSecond(valueSecond:number) {
+        this.second += valueSecond;
+        var minutesObtained = Math.floor(this.second / 60);
+        this.minute += minutesObtained;
+        this.second = (this.second % 60);
+        while(this.second < 0) {
+            this.second += 60;
+        }
+        while(this.minute > 59) {
+            this.minute -= 60;
+            this.hour++;
+        }
+        /*
+        if(this.second < 0) {
+            this.second += 60;
+        }
+        if(this.minute > 59) {
+            this.minute -= 60;
+        } else if(this.minute < 0) {
+            this.minute += 60;
+        }*/
+    }
+
+    operationMinute(valueMinute: number) {
+        this.minute += valueMinute;
+        var hourObtained = Math.floor(this.minute / 60);
+        this.hour += hourObtained;
+        this.minute = (this.minute % 60);
+        while(this.minute < 0) {
+            this.minute += 60;
+        } 
+        while(this.minute > 59) {
+            this.minute -= 60;
+        } 
+        while(this.hour > 23) {
+            this.hour -= 24;
+        }
+    }
+
+    operationHour(valueHour: number) {}
     
 }
 
 var firstClock = new Clock(15, 20, 25);
+firstClock.operationSecond(-50);
 //firstClock.addSecond(80);
 //firstClock.addMinute(120);
 //firstClock.addHour(23);
