@@ -26,16 +26,9 @@ class Clock {
         
     }
 
-    //I metodi getter sono utilizzati per accedere alle proprietà di un oggetto.
-    //I metodi setter vengono utilizzati per modificare i valori di un oggetto.
-    /*
-    get hourValue() {
-        return this.second;
-    }
-
-    set hourValue(value) {
-        this.second = Math.floor(value / 3600);
-    }
+    //I metodi getter sono utilizzati per ottenere il valore della proprietà
+    //I metodi setter vengono utilizzati per impostare il valore della proprietà
+    //get può esistere senza set, ma set non lo può fare senza get
 
     get secondValue() {
         return this.second;
@@ -43,15 +36,28 @@ class Clock {
 
     set secondValue(value) {
         this.second = value;
-    } */
+    } 
+    
+    get hourValue() {
+        return this.second;
+    }
+
+    set hourValue(value) {
+        value = Math.floor(this.second / 3600);
+    }
+
+    get minuteValue() {
+        return this.second;
+    }
+
+    set minuteValue(value) {
+        value = Math.floor(this.second / 60);
+    }
 
     calculateMinute(secondAdd: number) {
         this.second += secondAdd;
         let minute = Math.floor(this.second / 60);
         this.second = (this.second % 60);
-        while(minute > 59) {
-            minute -= 60;
-        }
         console.log("I minuti sono: " + minute + ", i secondi sono: " + this.second);
     }
 
@@ -65,15 +71,17 @@ class Clock {
 }
 
 var firstClock = new Clock(1, 10, 30); //4230 --> 600
-firstClock.calculateMinute(80);
-//firstClock.calculateHour(3700);
+//firstClock.calculateMinute(80);
+firstClock.calculateHour(3700);
 console.log(firstClock);
 
 var secondClock = new Clock(15, 20.5, 25);
+secondClock.calculateMinute(100);
+//secondClock.calculateHour(4000);
 console.log(secondClock);
 
 //Funzione che compara i due orologi
-/*function compareTwoClock() {
+function compareTwoClock() {
     if(firstClock.secondValue == secondClock.secondValue) {
         console.log("I due orologi sono uguali");
     } else {
@@ -81,4 +89,4 @@ console.log(secondClock);
     }
 }
 
-compareTwoClock();*/
+compareTwoClock();
